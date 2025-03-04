@@ -1,10 +1,13 @@
 #------------------------------------loading the necessary libries--------------------------------------#
-library(tidyverse)
-library(devtools)
-library(disbayes)
-library(tmap)
-library(sf)
-library(ggspatial)
+libs <- c( "tidyverse", "devtools", "disbayes", "tmap", "sf", "ggspatial")
+
+for(ilib in libs){
+  if(!(ilib %in% installed.packages())){
+    install.packages(ilib)
+  }
+  library(ilib, character.only = T)
+}
+
 #------------------------------------simple function----------------------------------------------------#
 compute_mean <- function(data){
   stats_summary <-function(x){
